@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table cjkpl_tiles_cards'
+    - builder_table_create_cjkpl_tiles_cards.php
+1.0.3:
+    - 'Created table cjkpl_tiles_sections'
+    - builder_table_create_cjkpl_tiles_sections.php

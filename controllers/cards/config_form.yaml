@@ -1,0 +1,10 @@
+name: Cards
+form: $/cjkpl/tiles/models/card/fields.yaml
+modelClass: Cjkpl\Tiles\Models\Card
+defaultRedirect: cjkpl/tiles/cards
+create:
+    redirect: 'cjkpl/tiles/cards/update/:id'
+    redirectClose: cjkpl/tiles/cards
+update:
+    redirect: cjkpl/tiles/cards
+    redirectClose: cjkpl/tiles/cards

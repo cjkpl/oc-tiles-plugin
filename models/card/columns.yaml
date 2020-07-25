@@ -1,0 +1,64 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+        sortable: true
+    created_at:
+        label: created_at
+        type: datetime
+        invisible: true
+    updated_at:
+        label: updated_at
+        type: datetime
+        invisible: true
+    title:
+        label: title
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: description
+        type: text
+        searchable: true
+        invisible: true
+    language:
+        label: language
+        type: text
+        searchable: true
+        sortable: true
+    image:
+        label: image
+        type: text
+        invisible: true
+    url:
+        label: url
+        type: text
+        searchable: true
+        sortable: false
+    target:
+        label: target
+        type: text
+        invisible: true
+    tags:
+        label: tags
+        type: text
+        searchable: true
+    classes:
+        label: classes
+        type: text
+        invisible: true
+    is_visible:
+        label: is_visible
+        type: text
+        searchable: true
+        sortable: true
+    sort_order:
+        label: sort_order
+        type: number
+        sortable: true
+    section:
+        label: section
+        type: text
+        select: name
+        relation: section

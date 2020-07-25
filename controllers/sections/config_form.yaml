@@ -1,0 +1,10 @@
+name: Sections
+form: $/cjkpl/tiles/models/section/fields.yaml
+modelClass: Cjkpl\Tiles\Models\Section
+defaultRedirect: cjkpl/tiles/sections
+create:
+    redirect: 'cjkpl/tiles/sections/update/:id'
+    redirectClose: cjkpl/tiles/sections
+update:
+    redirect: cjkpl/tiles/sections
+    redirectClose: cjkpl/tiles/sections

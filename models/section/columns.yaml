@@ -1,0 +1,14 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    name:
+        label: name
+        type: text
+        searchable: true
+        sortable: true
+    is_visible:
+        label: is_visible
+        type: switch
+        sortable: true

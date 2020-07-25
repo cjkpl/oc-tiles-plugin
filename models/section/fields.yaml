@@ -1,0 +1,16 @@
+fields:
+    name:
+        label: 'Section name'
+        span: full
+        type: text
+    is_visible:
+        label: 'Section contents visible?'
+        span: auto
+        type: switch
+    cards:
+        label: Cards in this section
+        nameFrom: title
+        descriptionFrom: description
+        span: full
+        type: partial
+        defaultSort: ordering

@@ -1,0 +1,20 @@
+plugin:
+    name: 'cjkpl.tiles::lang.plugin.name'
+    description: 'cjkpl.tiles::lang.plugin.description'
+    author: CJK.PL
+    icon: oc-icon-pause
+    homepage: ''
+navigation:
+    tiles-menu-item:
+        label: Tiles
+        url: cjkpl/tiles/cards
+        icon: icon-trello
+        sideMenu:
+            cards-menu-item:
+                label: Cards
+                url: cjkpl/tiles/cards
+                icon: icon-trello
+            sections-menu-item:
+                label: Sections
+                url: cjkpl/tiles/sections
+                icon: icon-sitemap

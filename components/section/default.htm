@@ -1,0 +1,8 @@
+{% set columns = __SELF__.property('columns') %}
+{% set cards = __SELF__.cards %}
+
+{% if __SELF__.property('layout') and __SELF__.property('layout') != 'default'  %}
+    {% partial 'tiles/' ~ __SELF__.property('layout') cards = cards columns = columns %}
+{% else %}
+    {% partial '@tileset1' cards = cards columns = columns %}
+{% endif %}

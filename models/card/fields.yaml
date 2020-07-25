@@ -1,0 +1,60 @@
+fields:
+    title:
+        label: Title
+        span: full
+        type: text
+    description:
+        label: Description
+        size: small
+        span: full
+        type: richeditor
+    tags:
+        label: 'Tag list'
+        mode: string
+        separator: comma
+        customTags: true
+        useKey: false
+        span: full
+        type: taglist
+    url:
+        label: URL
+        span: full
+        type: text
+    target:
+        label: 'URL Target'
+        options:
+            _self: _self
+            _blank: _blank
+        showSearch: true
+        span: auto
+        type: dropdown
+    classes:
+        label: 'CSS Classes'
+        span: auto
+        type: text
+    image:
+        label: Image
+        mode: image
+        span: left
+        type: mediafinder
+    language:
+        label: Language
+        showSearch: true
+        span: right
+        type: dropdown
+        tab: Main
+    sort_order:
+        label: 'Sort order'
+        span: auto
+        type: number
+        default: 0
+    section:
+        label: Section
+        span: auto
+        nameFrom: name
+        descriptionFrom: description
+        type: relation
+    is_visible:
+        label: 'Visible?'
+        span: auto
+        type: switch

@@ -1,0 +1,64 @@
+tabs:
+  fields:
+    title:
+      label: Title
+      span: full
+      type: text
+      tab: Main
+    description:
+      label: Description
+      size: small
+      span: full
+      type: richeditor
+      tab: Main
+    url:
+      label: URL
+      span: full
+      type: text
+      tab: Main
+    target:
+      label: 'URL Target'
+      options:
+        _self: _self
+        _blank: _blank
+      showSearch: true
+      span: auto
+      type: dropdown
+      tab: Main
+    classes:
+      label: 'CSS Classes'
+      span: auto
+      type: text
+      tab: Main
+    language:
+      label: Language
+      showSearch: true
+      span: right
+      type: dropdown
+      tab: Main
+    sort_order:
+      label: 'Sort order'
+      span: auto
+      type: number
+      default: 0
+      tab: Main
+    is_visible:
+      label: 'Visible?'
+      span: auto
+      type: switch
+      tab: Main
+    tags:
+      label: 'Tag list'
+      mode: string
+      separator: comma
+      customTags: true
+      useKey: false
+      span: full
+      type: taglist
+      tab: 'Image and tags'
+    image:
+      label: Image
+      mode: image
+      span: left
+      type: mediafinder
+      tab: 'Image and tags'

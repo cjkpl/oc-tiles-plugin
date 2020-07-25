@@ -1,0 +1,12 @@
+list: $/cjkpl/tiles/models/card/columns.yaml
+modelClass: Cjkpl\Tiles\Models\Card
+title: Cards
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'cjkpl/tiles/cards/update/:id'

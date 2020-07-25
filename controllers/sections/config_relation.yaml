@@ -1,0 +1,13 @@
+
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+cards:
+    label: Cards in this section
+    view:
+        list: $/cjkpl/tiles/models/card/columns.yaml
+        toolbarButtons: create|delete
+    manage:
+        list: $/cjkpl/tiles/models/card/columns.yaml
+        form: $/cjkpl/tiles/models/card/fields_inline.yaml
