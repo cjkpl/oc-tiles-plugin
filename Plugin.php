@@ -1,6 +1,7 @@
 <?php namespace Cjkpl\Tiles;
 
 use System\Classes\PluginBase;
+use Illuminate\Support\Facades\Event;
 
 class Plugin extends PluginBase
 {
@@ -20,5 +21,14 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+    }
+
+    public function register()
+    {
+        Event::listen('cms.page.beforeRenderPage', function($controller, $page) {
+
+            $twig = $controller->getTwig();
+            $twig->addExtension(new \Twig_Extension_StringLoader());
+        });
     }
 }

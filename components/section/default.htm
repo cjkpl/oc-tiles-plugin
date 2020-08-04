@@ -1,8 +1,18 @@
 {% set columns = __SELF__.property('columns') %}
 {% set cards = __SELF__.cards %}
+{% set flipeven = __SELF__.property('flipeven') %}
 
-{% if __SELF__.property('layout') and __SELF__.property('layout') != 'default'  %}
-    {% partial 'tiles/' ~ __SELF__.property('layout') cards = cards columns = columns %}
+{% if 
+        __SELF__.property('layout') and 
+        __SELF__.property('layout') != '-default-' and 
+        __SELF__.property('layout') != '-section-'  %}
+    {% partial 'tiles/' ~ __SELF__.property('layout') cards=cards columns=columns flipeven=flipeven %}
+{% elseif 
+        __SELF__.property('layout') and 
+        __SELF__.property('layout') == '-section-' %}
+
+    {% partial '@inline' cards = cards columns = columns flipeven=flipeven layout=__SELF__.section.layout %}    
+    
 {% else %}
-    {% partial '@tileset1' cards = cards columns = columns %}
+    {% partial '@tileset1' cards = cards columns = columns flipeven=flipeven %}
 {% endif %}

@@ -1,16 +1,32 @@
-fields:
-    name:
-        label: 'Section name'
-        span: full
-        type: text
-    is_visible:
-        label: 'Section contents visible?'
-        span: auto
-        type: switch
-    cards:
-        label: Cards in this section
-        nameFrom: title
-        descriptionFrom: description
-        span: full
-        type: partial
-        defaultSort: ordering
+tabs:
+    fields:
+        name:
+            label: 'Section name'
+            span: full
+            type: text
+        is_visible:
+            label: 'Section contents visible?'
+            span: auto
+            type: switch
+        cards:
+            label: 'Cards in this section'
+            nameFrom: title
+            descriptionFrom: description
+            span: full
+            type: partial
+            defaultSort: ordering
+        layout:
+            tab: Layout
+            label: 'Custom layout code'
+            size: huge
+            language: html
+            span: full
+            type: codeeditor
+        custom_labels:
+            tab: Labels
+            label: 'Custom card labels'
+            span: full
+            prompt: 'Add new item'
+            type: repeater
+            comment: 'Not implemented yet. Will allow hiding or assigning custom labels for cards in dfiferent sections'
+            form: {  }

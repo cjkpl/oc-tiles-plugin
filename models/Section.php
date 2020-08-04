@@ -27,6 +27,9 @@ class Section extends Model
     public $rules = [
     ];
 
+    public $jsonable = ['custom_labels'];
+
+
     public $hasMany = [
         'cards' => 'Cjkpl\Tiles\Models\Card'
     ];

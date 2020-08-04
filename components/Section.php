@@ -9,6 +9,11 @@ class Section extends ComponentBase
      */
     public $cards;
 
+    /**
+     * @var section to display
+     */
+    public $section;
+
     public function componentDetails()
     {
         return [
@@ -31,9 +36,8 @@ class Section extends ComponentBase
             'layout' => [
                 'title'       => 'Layout',
                 'description' => 'Leave empty to use default; If entered, OctoberCMS will use a partial tiles/+layout_name',
-                'type'        => 'string',
-                'placeholder' => 'default',
-                'options'     => [1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6']
+                'type'        => 'dropdown',
+                'placeholder' => '-default-'
             ],
             'language' => [
                 'title'       => 'Language filter',
@@ -45,10 +49,30 @@ class Section extends ComponentBase
                 'title'   => 'Section',
                 'description' => 'Select section of tiles/cards to display',
                 'type'    => 'dropdown'
-            ]
+            ],
+            'flipeven' => [
+                'title'       => 'Alternate odd/even',
+                'description' => 'Alternate layout for odd/even cards (if defined in template)',
+                'type'        => 'checkbox'
+            ],
         ];
     }
 
+    public function onRun()
+    {
+        $this->cards = \Cjkpl\Tiles\Models\Card::where('section_id','=',$this->property('section'))
+             ->where('is_visible',true)->orderBy('sort_order','asc')->get();
+        
+        $this->section = 
+            \Cjkpl\Tiles\Models\Section::where('id','=',$this->property('section'))
+                                        ->where('is_visible',true)
+                                        ->first(['id','name','is_visible','layout']);
+
+    }
+
+    /**
+     * @return array list of dropdown options for Section Component+Snippet
+     */
     public function getSectionOptions()
     {
         $sections = \Cjkpl\Tiles\Models\Section::select('id','name')->where('is_visible',true)->get();
@@ -65,9 +89,34 @@ class Section extends ComponentBase
         return (['' => '- Any -'] + $l);
     }
 
-    public function onRun()
+    /**
+     * Get all partials in the "tiles" subfolder
+     *
+     * @return array
+     */
+    public function getLayoutOptions()
     {
-        $this->cards = \Cjkpl\Tiles\Models\Card::where('section_id','=',$this->property('section'))
-            ->where('is_visible',true)->orderBy('sort_order','asc')->get();
+        $theme = \Cms\Classes\Theme::getActiveTheme();
+
+        $path = $theme->getPath() . '/partials/tiles';
+
+        if (file_exists($path) === false) {
+            return [];
+        }
+
+        $files = array_diff(scandir($path), array('.', '..'));
+
+        $options = [
+            '-default-' => 'Default Layout', // use components/section/tileset1.htm 
+            '-section-' => 'Section (inline)' // use inline layout specified in Section config (e.g. from FateFactory) 
+        ];
+        foreach ($files as $file) {
+            if (substr($file, 0, 1) !== '_') {
+                $name = $file;
+                $options[$file] = $name;
+            }
+        }
+
+        return $options;
     }
 }

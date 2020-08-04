@@ -1,60 +1,121 @@
-fields:
-    title:
-        label: Title
-        span: full
-        type: text
-    description:
-        label: Description
-        size: small
-        span: full
-        type: richeditor
-    tags:
-        label: 'Tag list'
-        mode: string
-        separator: comma
-        customTags: true
-        useKey: false
-        span: full
-        type: taglist
-    url:
-        label: URL
-        span: full
-        type: text
-    target:
-        label: 'URL Target'
-        options:
-            _self: _self
-            _blank: _blank
-        showSearch: true
-        span: auto
-        type: dropdown
-    classes:
-        label: 'CSS Classes'
-        span: auto
-        type: text
-    image:
-        label: Image
-        mode: image
-        span: left
-        type: mediafinder
-    language:
-        label: Language
-        showSearch: true
-        span: right
-        type: dropdown
-        tab: Main
-    sort_order:
-        label: 'Sort order'
-        span: auto
-        type: number
-        default: 0
-    section:
-        label: Section
-        span: auto
-        nameFrom: name
-        descriptionFrom: description
-        type: relation
-    is_visible:
-        label: 'Visible?'
-        span: auto
-        type: switch
+tabs:
+    fields:
+        title:
+            label: Title
+            span: full
+            type: text
+            tab: Misc
+        description:
+            label: Description
+            size: small
+            span: full
+            type: richeditor
+            tab: Misc
+        classes:
+            label: 'CSS Classes'
+            span: auto
+            type: text
+            tab: Misc
+        image:
+            label: Image
+            mode: image
+            span: left
+            type: mediafinder
+            tab: Misc
+        language:
+            label: Language
+            showSearch: true
+            span: right
+            type: dropdown
+            tab: Misc
+        is_visible:
+            label: 'Visible?'
+            span: right
+            type: switch
+            tab: Misc
+        sort_order:
+            label: 'Sort order'
+            span: right
+            type: number
+            default: 0
+            tab: Misc
+        section:
+            label: Section
+            span: auto
+            nameFrom: name
+            descriptionFrom: description
+            type: relation
+            tab: Misc
+        name:
+            label: Name
+            span: left
+            type: text
+            comment: 'For cards with personal info'
+            tab: Person
+        photo:
+            label: 'Person photo'
+            mode: image
+            span: right
+            type: mediafinder
+            comment: 'Personal photo etc'
+            tab: Person
+        status:
+            label: Status
+            comment: 'Typically used for company, position, country, etc'
+            span: left
+            type: text
+            tab: Person
+        tags:
+            label: 'Tag list'
+            mode: string
+            separator: comma
+            customTags: true
+            useKey: false
+            span: left
+            type: taglist
+            comment: 'If URL pattern provided for tags, they will be  clickable'
+            tab: 'Tags & URLs'
+        tags_url_pattern:
+            label: 'URL pattern for tags'
+            span: right
+            type: text
+            comment: '%tag% in the pattern will be replaced with tag label'
+            tab: 'Tags & URLs'
+        url:
+            label: URL
+            span: left
+            type: text
+            tab: 'Tags & URLs'
+        target:
+            label: 'URL Target'
+            options:
+                _self: _self
+                _blank: _blank
+            showSearch: true
+            span: right
+            type: dropdown
+            tab: 'Tags & URLs'
+        custom_set:
+            label: 'Custom Set (e.g. Social Media) - PLEASE IGNORE - THIS FEATURE IS NOT IMPLEMENTED YET!'
+            prompt: 'Add new item'
+            span: full
+            type: repeater
+            tab: 'Custom Sets'
+            form:
+                fields:
+                    icon:
+                        label: 'Icon (e.g. material icon)'
+                        span: left
+                        type: text
+                    url:
+                        label: URL
+                        span: right
+                        type: text
+                    label1:
+                        label: 'Label 1'
+                        span: auto
+                        type: text
+                    label2:
+                        label: 'Label 2'
+                        span: auto
+                        type: text

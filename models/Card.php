@@ -21,6 +21,8 @@ class Card extends Model
     public $rules = [
     ];
 
+    public $jsonable = ['tags','custom_set'];
+
     public function getLanguageOptions($value, $formData)
     {
         return \Cjkpl\PubliCat\Classes\Languages::getCommonLanguageOptions();

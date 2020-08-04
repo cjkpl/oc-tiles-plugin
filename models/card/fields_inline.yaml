@@ -4,61 +4,115 @@ tabs:
       label: Title
       span: full
       type: text
-      tab: Main
+      tab: Misc
     description:
       label: Description
       size: small
       span: full
       type: richeditor
-      tab: Main
-    url:
-      label: URL
-      span: full
-      type: text
-      tab: Main
-    target:
-      label: 'URL Target'
-      options:
-        _self: _self
-        _blank: _blank
-      showSearch: true
-      span: auto
-      type: dropdown
-      tab: Main
+      tab: Misc
     classes:
       label: 'CSS Classes'
       span: auto
       type: text
-      tab: Main
+      tab: Misc
+    image:
+      label: Image
+      mode: image
+      span: left
+      type: mediafinder
+      tab: Misc
     language:
       label: Language
       showSearch: true
       span: right
       type: dropdown
-      tab: Main
-    sort_order:
-      label: 'Sort order'
-      span: auto
-      type: number
-      default: 0
-      tab: Main
+      tab: Misc
     is_visible:
       label: 'Visible?'
-      span: auto
+      span: right
       type: switch
-      tab: Main
+      tab: Misc
+    sort_order:
+      label: 'Sort order'
+      span: right
+      type: number
+      default: 0
+      tab: Misc
+
+    name:
+      label: Name
+      comment: 'For cards with personal info'
+      span: left
+      type: text
+      tab: Person
+    photo:
+      label: 'Person photo'
+      comment: 'Personal photo etc'
+      mode: image
+      span: right
+      type: mediafinder
+      tab: Person
+    status:
+      label: Status
+      comment: 'Typically used for company, position, country, etc'
+      span: left
+      type: text
+      tab: Person
     tags:
       label: 'Tag list'
       mode: string
       separator: comma
       customTags: true
       useKey: false
-      span: full
-      type: taglist
-      tab: 'Image and tags'
-    image:
-      label: Image
-      mode: image
       span: left
-      type: mediafinder
-      tab: 'Image and tags'
+      type: taglist
+      comment: 'If URL pattern provided for tags, they will be  clickable'
+      tab: 'Tags & URLs'
+    tags_url_pattern:
+      label: 'URL pattern for tags'
+      span: right
+      type: text
+      comment: '%tag% in the pattern will be replaced with tag label'
+      tab: 'Tags & URLs'
+    url:
+      label: URL
+      span: left
+      type: text
+      tab: 'Tags & URLs'
+    target:
+      label: 'URL Target'
+      options:
+        _self: _self
+        _blank: _blank
+      showSearch: true
+      span: right
+      type: dropdown
+      tab: 'Tags & URLs'
+
+    # Custom sets of fields (e.g. for social media icons/links etc)
+
+    custom_set:
+      label: 'Custom Set (e.g. Social Media)'
+      prompt: 'Add new item'
+      span: full
+      type: repeater
+      tab: 'Custom Sets'
+      form:
+        fields:
+          icon:
+            label: 'Icon (e.g. material icon)'
+            span: left
+            type: text
+          url:
+            label: URL
+            span: right
+            type: text
+          label1:
+            label: 'Label 1'
+            span: auto
+            type: text
+          label2:
+            label: 'Label 2'
+            span: auto
+            type: text
