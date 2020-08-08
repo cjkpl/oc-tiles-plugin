@@ -25,7 +25,7 @@ class Card extends Model
 
     public function getLanguageOptions($value, $formData)
     {
-        return \Cjkpl\PubliCat\Classes\Languages::getCommonLanguageOptions();
+        return \Cjkpl\Tiles\Classes\Languages::getCommonLanguageOptions();
     }
 
     public $belongsTo = [

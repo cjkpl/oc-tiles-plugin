@@ -12,3 +12,5 @@
 1.0.5:
     - 'Updated table cjkpl_tiles_sections'
     - builder_table_update_cjkpl_tiles_sections.php
+1.0.6:
+    - 'Removed external dependency with GetCommonLanguageOptions.'

@@ -7,7 +7,7 @@ plugin:
 navigation:
     tiles-menu-item:
         label: Tiles
-        url: cjkpl/tiles/cards
+        url: cjkpl/tiles/sections
         icon: icon-trello
         sideMenu:
             sections-menu-item:

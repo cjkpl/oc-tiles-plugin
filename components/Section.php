@@ -85,7 +85,7 @@ class Section extends ComponentBase
 
     public function getLanguageOptions()
     {
-        $l = \Cjkpl\PubliCat\Classes\Languages::getCommonLanguageOptions();
+        $l = \Cjkpl\Tiles\Classes\Languages::getCommonLanguageOptions();
         return (['' => '- Any -'] + $l);
     }
 
