@@ -10,11 +10,11 @@ navigation:
         url: cjkpl/tiles/cards
         icon: icon-trello
         sideMenu:
-            cards-menu-item:
-                label: Cards
-                url: cjkpl/tiles/cards
-                icon: icon-trello
             sections-menu-item:
                 label: Sections
                 url: cjkpl/tiles/sections
                 icon: icon-sitemap
+            cards-menu-item:
+                label: Cards
+                url: cjkpl/tiles/cards
+                icon: icon-trello
