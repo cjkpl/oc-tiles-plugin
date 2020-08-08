@@ -3,7 +3,7 @@ plugin:
     description: 'cjkpl.tiles::lang.plugin.description'
     author: CJK.PL
     icon: oc-icon-pause
-    homepage: ''
+    homepage: 'https://fatefactory.com/oc-tiles-plugin'
 navigation:
     tiles-menu-item:
         label: Tiles
