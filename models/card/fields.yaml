@@ -105,6 +105,7 @@ tabs:
             showSearch: true
             span: right
             type: dropdown
+            comment: '{{ card.target }} in TWIG'
             tab: 'Tags & URLs'
         autolink_content:
             label: 'Auto link content if present'

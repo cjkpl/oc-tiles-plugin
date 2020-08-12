@@ -87,12 +87,14 @@ class Section extends ComponentBase
         /*
          * Add a "url" helper attribute for linking to each card detail
          */
+        
         $this->cards->each(function($card) {
-            if ($card['autolink_content'] == 1 && empty($card['url']) ) {
+            if ($card['autolink_content'] == 1 && empty($card['url'] && strlen($card['content'])>3) ) {
                 $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
 
             }
         });
+        
                                
 
     }
