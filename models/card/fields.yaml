@@ -4,23 +4,38 @@ tabs:
             label: Title
             span: full
             type: text
+            comment: '{{ card.title }} in TWIG'
             tab: Misc
         description:
             label: Description
             size: small
             span: full
             type: richeditor
+            comment: '{{ card.description | raw }} in TWIG'
             tab: Misc
         classes:
             label: 'CSS Classes'
             span: auto
             type: text
+            comment: '{{ card.classes }} in TWIG'
             tab: Misc
         image:
             label: Image
             mode: image
-            span: left
+            span: right
             type: mediafinder
+            comment: '{{ card.image|media }} in TWIG'
+            tab: Misc
+        _display_settings:
+            label: 'Display Settings'
+            span: full
+            type: section
+            tab: Misc
+        sort_order:
+            label: 'Sort order'
+            span: left
+            default: 0
+            type: number
             tab: Misc
         language:
             label: Language
@@ -33,12 +48,6 @@ tabs:
             span: right
             type: switch
             tab: Misc
-        sort_order:
-            label: 'Sort order'
-            span: right
-            type: number
-            default: 0
-            tab: Misc
         section:
             label: Section
             span: auto
@@ -46,24 +55,25 @@ tabs:
             descriptionFrom: description
             type: relation
             tab: Misc
+            hidden: false
         name:
             label: Name
             span: left
             type: text
-            comment: 'For cards with personal info'
+            comment: 'For cards with personal info - {{ card.name }} in TWIG'
             tab: Person
         photo:
             label: 'Person photo'
             mode: image
             span: right
             type: mediafinder
-            comment: 'Personal photo etc'
+            comment: 'Personal photo etc - {{ card.photo | media }} in TWIG'
             tab: Person
         status:
             label: Status
-            comment: 'Typically used for company, position, country, etc'
             span: left
             type: text
+            comment: 'Typically used for company, position, country, etc - {{ card.status }} in TWIG'
             tab: Person
         tags:
             label: 'Tag list'
@@ -73,18 +83,19 @@ tabs:
             useKey: false
             span: left
             type: taglist
-            comment: 'If URL pattern provided for tags, they will be  clickable'
+            comment: '{% for tag in tags %} {{ tag  }} {% endfor %}'
             tab: 'Tags & URLs'
         tags_url_pattern:
             label: 'URL pattern for tags'
             span: right
             type: text
-            comment: '%tag% in the pattern will be replaced with tag label'
+            comment: 'Not implemented yet!'
             tab: 'Tags & URLs'
         url:
             label: URL
             span: left
             type: text
+            comment: '{{ card.url }} in TWIG. See also Content Page for auto-links'
             tab: 'Tags & URLs'
         target:
             label: 'URL Target'
@@ -95,8 +106,21 @@ tabs:
             span: right
             type: dropdown
             tab: 'Tags & URLs'
+        autolink_content:
+            label: 'Auto link content if present'
+            span: full
+            type: checkbox
+            comment: 'If content page defined, create automatic link to card content {{ card.url }}'
+            tab: 'Content Page'
+        content:
+            label: 'Card content'
+            span: full
+            size: giant
+            type: richeditor
+            commentAbove: 'Any clicklable card can have a sub-page with content details'
+            tab: 'Content Page'
         custom_set:
-            label: 'Custom Set (e.g. Social Media) - PLEASE IGNORE - THIS FEATURE IS NOT IMPLEMENTED YET!'
+            label: 'Custom Set (e.g. Social Media)'
             prompt: 'Add new item'
             span: full
             type: repeater

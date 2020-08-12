@@ -9,6 +9,7 @@ class Plugin extends PluginBase
     {
         return [
             'Cjkpl\Tiles\Components\Section' => 'section',
+            'Cjkpl\Tiles\Components\Card' => 'card',
         ];
     }
 
@@ -16,6 +17,7 @@ class Plugin extends PluginBase
     {
         return [
             'Cjkpl\Tiles\Components\Section' => 'section',
+            'Cjkpl\Tiles\Components\Card' => 'card',
         ];
     }
 

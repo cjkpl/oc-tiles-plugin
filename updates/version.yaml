@@ -14,3 +14,6 @@
     - builder_table_update_cjkpl_tiles_sections.php
 1.0.6:
     - 'Removed external dependency with GetCommonLanguageOptions.'
+1.0.7:
+    - 'Table cjkpl_tiles_cards - added card content section, new fields in card editor, and new component to display single card content'
+    - builder_table_update_cjkpl_tiles_cards_2.php

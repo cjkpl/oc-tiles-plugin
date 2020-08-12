@@ -1,6 +1,7 @@
 <?php namespace Cjkpl\Tiles\Components;
 
 use Cms\Classes\ComponentBase;
+use Cms\Classes\Page;
 
 class Section extends ComponentBase
 {
@@ -13,6 +14,13 @@ class Section extends ComponentBase
      * @var section to display
      */
     public $section;
+
+    /**
+     * Reference to the page name for linking to card content
+     *
+     * @var string
+     */
+    public $contentPage;
 
     public function componentDetails()
     {
@@ -55,11 +63,19 @@ class Section extends ComponentBase
                 'description' => 'Alternate layout for odd/even cards (if defined in template)',
                 'type'        => 'checkbox'
             ],
+            'contentPage' => [
+                'title'       => 'Content page',
+                'description' => 'Optional page to show `Content` field of any card',
+                'type'        => 'dropdown',
+                'group'       => 'Links',
+            ],
         ];
     }
 
     public function onRun()
     {
+        $this->prepareVars();
+
         $this->cards = \Cjkpl\Tiles\Models\Card::where('section_id','=',$this->property('section'))
              ->where('is_visible',true)->orderBy('sort_order','asc')->get();
         
@@ -68,6 +84,30 @@ class Section extends ComponentBase
                                         ->where('is_visible',true)
                                         ->first(['id','name','is_visible','layout']);
 
+        /*
+         * Add a "url" helper attribute for linking to each card detail
+         */
+        $this->cards->each(function($card) {
+            if ($card['autolink_content'] == 1 && empty($card['url']) ) {
+                $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
+
+            }
+        });
+                               
+
+    }
+
+    public function getContentPageOptions()
+    {
+        return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+    }
+
+    protected function prepareVars()
+    {
+        /*
+         * Page links
+         */
+        $this->contentPage = $this->page['contentPage'] = $this->property('contentPage');
     }
 
     /**
