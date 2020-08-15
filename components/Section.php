@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
+use Input;
 
 class Section extends ComponentBase
 {
@@ -87,12 +88,15 @@ class Section extends ComponentBase
         /*
          * Add a "url" helper attribute for linking to each card detail
          */
-        
         $this->cards->each(function($card) {
-            if ($card['autolink_content'] == 1 && empty($card['url'] && strlen($card['content'])>3) ) {
+            if (
+                ($card['autolink_content'] == 1) &&  // ok to autolink
+                (strlen($card['url']) == 0 &&        // but only if url is empty
+                 strlen($card['content'])>3)         // and there is some content defined
+                ) 
+                {
                 $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
-
-            }
+                }
         });
         
                                
