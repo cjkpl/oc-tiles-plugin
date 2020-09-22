@@ -70,3 +70,7 @@ The Dialog for configuring a "Section of Cards" contains the following options:
 - Layout: defines the card template to use. By default, it will use `plugins\cjkpl\tiles\components\section\tileset1.htm`. Note, if you decide to fork the component in the backend page editor, it will clone just the `plugins\cjkpl\tiles\components\section\default.htm`, which is not enough - most likely will want to edit the `tileset1.htm` as well, as this is where the cards are defined. The `default.htm` merely decides which layout to load: a default one, an inline one (i.e. one defined in the "Section Layout" form editor), or one of the partials defined in `THEME-FOLDER/partials/tiles/`
 - Language filter: author's personal requirements called for an easy way to add cards in multiple languages (also in one section), and this option allows you to select for display only cards in a specific language.
 - Section: decides which of the sections defined in the Tiles Section editor in the backend should be displayed. You can only display one section at a time.
+
+#### Changelog
+
+* 1.0.10 (2020-09-22). Renamed tags_url_patter to tags_url column and turned it into a repeater. This allows generating tags with unique urls, e.g. ```{% for tag in xtags %} {{ tag.label }} {{ tag.url }} {{ tag.target }} {% endfor %}```

@@ -21,3 +21,6 @@
     - 'Added code to detect if card URL has been explicitly set, and if it is not set, but autolink_content is set and some content is present, to inject into the card.url field in the Section component an automatically generated link to the card content page.'
 1.0.9:
     - 'Fixed an `ok to auto-link` condition in Section'
+1.0.10:
+    - 'Updated table cjkpl_tiles_cards renamed tags_url_pattern to tags_url which will now become a repeater field'
+    - builder_table_update_cjkpl_tiles_cards_3.php

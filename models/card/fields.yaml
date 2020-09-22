@@ -107,6 +107,33 @@ tabs:
             type: dropdown
             comment: '{{ card.target }} in TWIG'
             tab: 'Tags & URLs'
+        tags_url:
+            label: 'Extended tags with URLs'
+            prompt: 'Add new item'
+            span: full
+            type: repeater
+            comment: '{% for tag in xtags %} {{ tag.label }} {{ tag.url }} {{ tag.target }} {% endfor %}'
+            tab: 'Extended tags'
+            form:
+                fields:
+                    label:
+                        label: Tag
+                        span: auto
+                        type: text
+                    url:
+                        label: URL
+                        span: auto
+                        type: text
+                    target:
+                        label: Target
+                        span: auto
+                        showSearch: true
+                        options:
+                            _blank: 'New window'
+                            _self: 'Same window'
+                        type: dropdown
+
+
         autolink_content:
             label: 'Auto link content if present'
             span: full
