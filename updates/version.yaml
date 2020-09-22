@@ -23,4 +23,7 @@
     - 'Fixed an `ok to auto-link` condition in Section'
 1.0.10:
     - 'Updated table cjkpl_tiles_cards renamed tags_url_pattern to tags_url which will now become a repeater field'
+    - builder_table_update_cjkpl_tiles_cards3.php
+1.0.11:
+    - 'Updated table cjkpl_tiles_cards - changed tags_url to text, string was too short'
     - builder_table_update_cjkpl_tiles_cards_3.php

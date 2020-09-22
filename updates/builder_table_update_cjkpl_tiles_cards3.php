@@ -9,7 +9,7 @@ class BuilderTableUpdateCjkplTilesCards3 extends Migration
     {
         Schema::table('cjkpl_tiles_cards', function($table)
         {
-            $table->text('tags_url')->nullable()->unsigned(false)->default(null)->change();
+            $table->renameColumn('tags_url_pattern', 'tags_url');
         });
     }
     
@@ -17,7 +17,7 @@ class BuilderTableUpdateCjkplTilesCards3 extends Migration
     {
         Schema::table('cjkpl_tiles_cards', function($table)
         {
-            $table->string('tags_url', 191)->nullable()->unsigned(false)->default(null)->change();
+            $table->renameColumn('tags_url', 'tags_url_pattern');
         });
     }
 }

@@ -21,7 +21,7 @@ class Card extends Model
     public $rules = [
     ];
 
-    public $jsonable = ['tags','custom_set'];
+    public $jsonable = ['tags','custom_set', 'tags_url'];
 
     public function getLanguageOptions($value, $formData)
     {

@@ -85,12 +85,6 @@ tabs:
             type: taglist
             comment: '{% for tag in tags %} {{ tag  }} {% endfor %}'
             tab: 'Tags & URLs'
-        tags_url_pattern:
-            label: 'URL pattern for tags'
-            span: right
-            type: text
-            comment: 'Not implemented yet!'
-            tab: 'Tags & URLs'
         url:
             label: URL
             span: left
@@ -112,7 +106,7 @@ tabs:
             prompt: 'Add new item'
             span: full
             type: repeater
-            comment: '{% for tag in xtags %} {{ tag.label }} {{ tag.url }} {{ tag.target }} {% endfor %}'
+            comment: 'E.g. {% for tag in card.tags_url %} {{ tag.label }} {{ tag.url }} {{ tag.target }} {% endfor %}'
             tab: 'Extended tags'
             form:
                 fields:
@@ -129,8 +123,8 @@ tabs:
                         span: auto
                         showSearch: true
                         options:
-                            _blank: 'New window'
                             _self: 'Same window'
+                            _blank: 'New window'
                         type: dropdown
 
 
