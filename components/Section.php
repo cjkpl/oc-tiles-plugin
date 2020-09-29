@@ -44,7 +44,8 @@ class Section extends ComponentBase
             ],
             'layout' => [
                 'title'       => 'Layout',
-                'description' => 'Leave empty to use default; If entered, OctoberCMS will use a partial tiles/+layout_name',
+                'description' => 'Leave empty to use default; 
+                                 If entered, OctoberCMS will use a partial tiles/+layout_name',
                 'type'        => 'dropdown',
                 'placeholder' => '-default-'
             ],
