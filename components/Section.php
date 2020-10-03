@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Input;
+use Event;
 
 class Section extends ComponentBase
 {
@@ -78,13 +79,20 @@ class Section extends ComponentBase
     {
         $this->prepareVars();
 
-        $this->cards = \Cjkpl\Tiles\Models\Card::where('section_id','=',$this->property('section'))
-             ->where('is_visible',true)->orderBy('sort_order','asc')->get();
+        $this->cards =
+            \Cjkpl\Tiles\Models\Card
+                ::where('section_id','=',$this->property('section'))
+                ->where('is_visible',true)
+                ->orderBy('sort_order','asc')->get();
         
         $this->section = 
             \Cjkpl\Tiles\Models\Section::where('id','=',$this->property('section'))
                                         ->where('is_visible',true)
                                         ->first(['id','name','is_visible','layout']);
+
+
+        // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
+        Event::fire('cjkpl.tiles.section.display', [&$this]);
 
         /*
          * Add a "url" helper attribute for linking to each card detail
@@ -99,8 +107,6 @@ class Section extends ComponentBase
                 $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
                 }
         });
-        
-                               
 
     }
 
