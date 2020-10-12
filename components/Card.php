@@ -1,6 +1,7 @@
 <?php namespace Cjkpl\Tiles\Components;
 
 use Cms\Classes\ComponentBase;
+use Event;
 
 class Card extends ComponentBase
 {
@@ -30,5 +31,8 @@ class Card extends ComponentBase
                 ::where('id','=',$this->param('id'))
                 ->where('is_visible',true)
                 ->first();
+
+        // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
+        Event::fire('cjkpl.tiles.card.display', [&$this]);
     }
 }
