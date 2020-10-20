@@ -13,9 +13,9 @@ class Section extends ComponentBase
     public $cards;
 
     /**
-     * @var section to display
+     * @var section(s) to display
      */
-    public $section;
+    public $sections;
 
     /**
      * Reference to the page name for linking to card content
@@ -79,16 +79,27 @@ class Section extends ComponentBase
     {
         $this->prepareVars();
 
+        // if param('slug') defined, it overrides 'section' property
+
+        $section_ids = [$this->property('section')]; // default from property
+
+        if ($this->param('slug')) { // override from url
+            // allow multiple sections - if slug contains a comma, break it into tokens
+            $section_ids = explode(',',$this->param('slug'));
+        } 
+
         $this->cards =
             \Cjkpl\Tiles\Models\Card
-                ::where('section_id','=',$this->property('section'))
+                ::whereIn('section_id',$section_ids)
                 ->where('is_visible',true)
+                ->orderBy('section_id','asc')
                 ->orderBy('sort_order','asc')->get();
-        
-        $this->section = 
-            \Cjkpl\Tiles\Models\Section::where('id','=',$this->property('section'))
+
+        $this->sections = 
+            \Cjkpl\Tiles\Models\Section::whereIn('id', $section_ids)
                                         ->where('is_visible',true)
-                                        ->first(['id','name','is_visible','layout']);
+                                        ->orderBy('id','asc')
+                                        ->get(['id','name','is_visible','layout']);
 
 
         // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
