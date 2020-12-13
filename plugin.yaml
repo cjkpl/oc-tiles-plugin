@@ -7,14 +7,17 @@ plugin:
 navigation:
     tiles-menu-item:
         label: Tiles
-        url: cjkpl/tiles/sections
+        url: cjkpl/tiles/cards
         icon: icon-trello
+        permissions: ['cjkpl.tiles.cards']
         sideMenu:
             sections-menu-item:
                 label: Sections
                 url: cjkpl/tiles/sections
                 icon: icon-sitemap
+                permissions: ['cjkpl.tiles.sections']
             cards-menu-item:
                 label: Cards
                 url: cjkpl/tiles/cards
                 icon: icon-trello
+                permissions: ['cjkpl.tiles.cards']

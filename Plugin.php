@@ -33,4 +33,18 @@ class Plugin extends PluginBase
             $twig->addExtension(new \Twig_Extension_StringLoader());
         });
     }
+
+    public function registerPermissions()
+    {
+        return [
+            'cjkpl.tiles.cards' => [
+                'tab'   => 'Tiles',
+                'label' => 'Manage cards'
+            ],
+            'cjkpl.tiles.sections' => [
+                'tab'   => 'Tiles',
+                'label' => 'Manage sections (with cards)'
+            ],
+        ];
+    }
 }

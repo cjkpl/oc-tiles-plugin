@@ -15,6 +15,8 @@ class Cards extends Controller
     public $formConfig = 'config_form.yaml';
     public $reorderConfig = 'config_reorder.yaml';
 
+    public $requiredPermissions = ['cjkpl.tiles.cards'];
+
     public function __construct()
     {
         parent::__construct();

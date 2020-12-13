@@ -15,6 +15,8 @@ class Sections extends Controller
     public $formConfig = 'config_form.yaml';
     public $relationConfig = 'config_relation.yaml';
 
+    public $requiredPermissions = ['cjkpl.tiles.sections'];
+
     public function __construct()
     {
         parent::__construct();
