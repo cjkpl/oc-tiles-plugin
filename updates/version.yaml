@@ -31,3 +31,5 @@
     - Fixed broken update 1.0.11
 1.0.13:
     - Added support for override of selected section(s) via URL (/page/1,2,3) in Section component. As sections do not yet have sort_order column, they are sorted by ID.
+1.0.14:
+    - Backend / card list changes. 1. Implemented Sortable on Cards. 2. Added Card duplicate button in Card list. 3. Added card filtering in Card list.

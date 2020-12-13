@@ -1,0 +1,18 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    section:
+        label: Section
+        modelClass: Cjkpl\Tiles\Models\Section
+        conditions: section_id in (:filtered)
+        nameFrom: name
+
+    is_visible:
+        label: Visible
+        type: switch
+        conditions:
+            - is_visible <> true
+            - is_visible = true
