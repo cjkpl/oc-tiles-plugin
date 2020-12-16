@@ -24,6 +24,11 @@ class Section extends ComponentBase
      */
     public $contentPage;
 
+    /**
+     * @var string $REF last visited page
+     */
+    public $REF;
+
     public function componentDetails()
     {
         return [
@@ -132,6 +137,8 @@ class Section extends ComponentBase
          * Page links
          */
         $this->contentPage = $this->page['contentPage'] = $this->property('contentPage');
+
+        $this->REF = $_SERVER['HTTP_REFERER'] ?? '/';
     }
 
     /**

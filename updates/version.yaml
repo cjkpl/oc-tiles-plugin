@@ -35,3 +35,5 @@
     - Backend / card list changes. 1. Implemented Sortable on Cards. 2. Added Card duplicate button in Card list. 3. Added card filtering in Card list.
 1.0.15:
     - Added support for privileges (cards and sections)
+1.0.16:
+    - Added $REF / {{ __self__.REF }} variable in the Section and Card components, for convenience of easy returning from a detail page to a tile list page.

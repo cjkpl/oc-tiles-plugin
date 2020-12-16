@@ -11,6 +11,11 @@ class Card extends ComponentBase
      */
     public $card;
 
+    /**
+     * @var string $REF last visited page
+     */
+    public $REF;
+
     public function componentDetails()
     {
         return [
@@ -32,7 +37,14 @@ class Card extends ComponentBase
                 ->where('is_visible',true)
                 ->first();
 
+        $this->prepareVars();
+
         // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
         Event::fire('cjkpl.tiles.card.display', [&$this]);
+    }
+
+    protected function prepareVars()
+    {
+        $this->REF = $_SERVER['HTTP_REFERER'] ?? '/';
     }
 }
