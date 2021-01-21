@@ -64,7 +64,7 @@ class Plugin extends PluginBase
                 if (!$card) return;
 
                 // append card title to page title
-                $title = $title . " - " . $card->title;
+                $title = $card->title . " - " . $title;
 
                 // if card has a description, use it (removing any html tags)
                 // but only if it does not contain any twig!
