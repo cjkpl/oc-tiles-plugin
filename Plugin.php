@@ -1,5 +1,6 @@
 <?php namespace Cjkpl\Tiles;
 
+use Cjkpl\Tiles\Classes\CardMaker;
 use System\Classes\PluginBase;
 use Illuminate\Support\Facades\Event;
 
@@ -30,7 +31,7 @@ class Plugin extends PluginBase
         Event::listen('cms.page.beforeRenderPage', function($controller, $page) {
 
             $twig = $controller->getTwig();
-            $twig->addExtension(new \Twig_Extension_StringLoader());
+            $twig->addExtension(new \Twig\Extension\StringLoaderExtension());
         });
     }
 
@@ -46,5 +47,44 @@ class Plugin extends PluginBase
                 'label' => 'Manage sections (with cards)'
             ],
         ];
+    }
+
+    public function boot()
+    {
+        /**
+         * Add card tags as meta keywords in response to Cjkpl.Seo plugin event
+         */
+        Event::listen(
+            'cjkpl.seo.prepare',
+            function (string &$title, string &$description, \October\Rain\Support\Collection &$keywords) {
+
+                // retrieve card by last URI segment (should be card ID)
+                $card = CardMaker::getCard();
+                // if no card found, return without any action
+                if (!$card) return;
+
+                // append card title to page title
+                $title = $title . " - " . $card->title;
+
+                // if card has a description, use it (removing any html tags)
+                // but only if it does not contain any twig!
+                // TODO: figure out how to process twig in desc for seo purposes
+                $txt_description = trim(strip_tags($card->description));
+                // dd((strpos($txt_description, '{{') === false));
+                if (
+                (strlen($txt_description) > 3) &&
+                (strpos($txt_description, '{{') === false)) {
+                    $description = $txt_description;
+                }
+
+                // remove empty elements
+                $tags = array_filter(explode(',', $card->tags));
+
+                // if no tags, return without any action
+                if (count($tags) < 1) return;
+
+                $keywords = $keywords->merge($tags);
+            }
+        );
     }
 }

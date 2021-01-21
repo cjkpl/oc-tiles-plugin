@@ -1,7 +1,7 @@
 <?php namespace Cjkpl\Tiles\Components;
 
 use Cms\Classes\ComponentBase;
-use Event;
+use Cjkpl\Tiles\Classes\CardMaker;
 
 class Card extends ComponentBase
 {
@@ -31,16 +31,9 @@ class Card extends ComponentBase
 
     public function onRun()
     {
-        $this->card = 
-            \Cjkpl\Tiles\Models\Card
-                ::where('id','=',$this->param('id'))
-                ->where('is_visible',true)
-                ->first();
+        $this->card = CardMaker::getCard($this->param('id'));
 
         $this->prepareVars();
-
-        // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
-        Event::fire('cjkpl.tiles.card.display', [&$this]);
     }
 
     protected function prepareVars()
