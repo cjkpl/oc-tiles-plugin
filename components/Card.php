@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Cjkpl\Tiles\Classes\CardMaker;
+use Event;
 
 class Card extends ComponentBase
 {
