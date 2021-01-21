@@ -26,12 +26,7 @@ class CardMaker
             $seg = Request::segments();
             $id = intval(end($seg));
         }
-        $card = self::getCardFromId($id);
-
-        // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
-        Event::fire('cjkpl.tiles.card.display', [&$card]);
-
-        return $card;
+        return self::getCardFromId($id);
     }
 
     /**

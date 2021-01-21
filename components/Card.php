@@ -32,6 +32,8 @@ class Card extends ComponentBase
     public function onRun()
     {
         $this->card = CardMaker::getCard($this->param('id'));
+        // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
+        Event::fire('cjkpl.tiles.card.display', [&$this->card]);
 
         $this->prepareVars();
     }
