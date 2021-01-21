@@ -10,5 +10,5 @@ columns:
         sortable: true
     is_visible:
         label: is_visible
-        type: switch
+        type: list-switch
         sortable: true

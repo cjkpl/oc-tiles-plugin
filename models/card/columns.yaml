@@ -50,7 +50,12 @@ columns:
         invisible: true
     is_visible:
         label: is_visible
-        type: switch
+        type: list-switch
+        searchable: true
+        sortable: true
+    is_seo:
+        label: is_seo
+        type: list-switch
         searchable: true
         sortable: true
     sort_order:

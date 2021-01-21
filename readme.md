@@ -56,6 +56,15 @@ Individual fields are mapped onto the TWIG variables defined in the section temp
 - Tags and URLs - if the card is clickable, the URL field should be completed; If the card layout supports tags, you can add them here.
 - Custom sets - this part is currently under development
 
+#### Visibility and SEO
+
+A card will be shown if ```is_visible``` is true, and it's parent section ```is_visible``` is true.
+A card will respond to ```cjkpl.seo.prepare``` event if ```is_seo``` is true (which should be by default) 
+
+Card's tags are by default used as SEO keywords - they are appended to the page's default keywords.
+
+#### Example
+
 See in the example below, how a TWIG template from FateFactory allows automatic mapping of the Tag field onto a card definition:
 ![Card field mapping](https://fatefactory.com/storage/app/media/plugins/tiles/ff-card-mapping.png)
 

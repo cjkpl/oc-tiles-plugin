@@ -56,6 +56,13 @@ tabs:
             type: relation
             tab: Misc
             hidden: false
+        is_seo:
+            label: 'Include in SEO?'
+            span: right
+            type: switch
+            default: true
+            tab: Misc
+
         name:
             label: Name
             span: left

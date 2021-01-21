@@ -9,7 +9,7 @@
     {% set tags = card.tags | split(',') %}
 
     <div class="max-w-sm rounded overflow-hidden shadow-lg w-full md:w-1/{{ c_width_md }} lg:w-1/{{ c_width_lg }} mx-2 mb-2 flex flex-col flex-grow">
-        <img class="w-full" src="{{ card.image | media}}" alt="Sunset in the mountains">
+        <img class="w-full" src="{{ card.image | media}}" alt="{{ card.title }}">
         <div class="px-6 py-2 flex-grow-1 flex-auto">
             <div class="font-bold text-xl mb-2">{{ card.title }}</div>
             <div class="text-gray-700 text-sm">
