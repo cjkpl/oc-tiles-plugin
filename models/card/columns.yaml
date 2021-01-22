@@ -17,20 +17,29 @@ columns:
         type: text
         searchable: true
         sortable: true
-    description:
-        label: description
+#    description:
+#        label: description
+#        type: short-text
+#        searchable: true
+#        invisible: true
+    name:
+        label: Name
         type: text
         searchable: true
-        invisible: true
+        sortable: true
     language:
         label: language
         type: text
         searchable: true
         sortable: true
-    image:
-        label: image
-        type: text
-        invisible: true
+#    photo:
+#        label: photo
+#        type: media-preview
+#        invisible: true
+#    image:
+#        label: image
+#        type: media-preview
+#        invisible: true
     url:
         label: url
         type: text
@@ -50,12 +59,12 @@ columns:
         invisible: true
     is_visible:
         label: is_visible
-        type: list-switch
+        type: switch
         searchable: true
         sortable: true
     is_seo:
         label: is_seo
-        type: list-switch
+        type: switch
         searchable: true
         sortable: true
     sort_order:

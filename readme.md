@@ -14,7 +14,7 @@ Install plugin as usual:
 - using the OctoberCMS Marketplace or
 - get it from GitHub
 
-If you choose manual install (e.g. using GitHub), make sure to intialize the database tables using the cli command `php artisan october:up`. This will create two tables. 
+If you choose manual install (e.g. using GitHub), make sure to intialize the database tables using the cli command `php artisan october:up`. This will create two tables.
 
 ### Configuration and usage
 
@@ -22,7 +22,7 @@ If you choose manual install (e.g. using GitHub), make sure to intialize the dat
 
 ![Backend - Tiles component main interface](https://fatefactory.com/storage/app/media/plugins/tiles/sections-list.png)
 
-Start by adding at least one new section. In the section editor, provide at least the name, and turn the visibility of the section on. 
+Start by adding at least one new section. In the section editor, provide at least the name, and turn the visibility of the section on.
 
 A section constitutes a category of cards to be displayed on a specific page. Using the provided component, you can select a single section of tiles to be displayed. Each section can have a default display style, but it can be overriden in the CMS or StaticPage configuration, so that you can have the same dataset displayed using different styles on different pages.
 
@@ -46,7 +46,7 @@ A default template has been defined in the plugin (`plugins\cjkpl\tiles\componen
 
 Use either `tileset1.htm` or any TWIG card template from FateFactory.com as an inspiration for your new card layouts.
 
-#### Cards 
+#### Cards
 
 Card editor contains a set of typical fields used in Cards or Tiles. They are divided into tabs.
 Individual fields are mapped onto the TWIG variables defined in the section templates. Twig field names are listed below each field to help you work with the card templates.
@@ -58,8 +58,10 @@ Individual fields are mapped onto the TWIG variables defined in the section temp
 
 #### Visibility and SEO
 
+Note: cjkpl.seo is not yet on the OctoberCMS Market. The SEO functionality can be ignored for now.
+
 A card will be shown if ```is_visible``` is true, and it's parent section ```is_visible``` is true.
-A card will respond to ```cjkpl.seo.prepare``` event if ```is_seo``` is true (which should be by default) 
+A card will respond to ```cjkpl.seo.prepare``` event if ```is_seo``` is true (which should be by default)
 
 Card's tags are by default used as SEO keywords - they are appended to the page's default keywords.
 

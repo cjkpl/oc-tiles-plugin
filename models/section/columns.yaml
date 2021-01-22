@@ -8,7 +8,22 @@ columns:
         type: text
         searchable: true
         sortable: true
+    description:
+        label: Description
+        type: text
+        invisible: true
     is_visible:
-        label: is_visible
-        type: list-switch
+        label: Visible?
+        type: switch
+        sortable: true
+    is_seo:
+        label: SEO?
+        type: switch
+        sortable: true
+    parent_name:
+        label: Parent
+        relation: parent
+        sortable: true
+    sort_order:
+        label: Sort Order
         sortable: true

@@ -4,10 +4,27 @@ tabs:
             label: 'Section name'
             span: full
             type: text
+        description:
+            label: 'Description'
+            span: full
+            size: small
+            type: richeditor
         is_visible:
             label: 'Section contents visible?'
-            span: auto
+            span: left
             type: switch
+        parent:
+            label: Parent Section
+            nameFrom: name
+            span: right
+            type: relation
+            comment: 'Optional parent section'
+            emptyOption: None
+        is_seo:
+            label: 'Include name / description in SEO?'
+            span: left
+            type: switch
+            default: 1
         cards:
             label: 'Cards in this section'
             nameFrom: title
