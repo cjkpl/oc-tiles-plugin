@@ -208,9 +208,8 @@ class Card extends Model
             $query = self::isVisible()
                 ->orderBy('title');
 
-            $sections = $section->getAllChildrenAndSelf()->lists('id');
-            $query->whereHas('sections', function($q) use ($sections) {
-                $q->whereIn('id', $sections);
+            $query->whereHas('section', function($q) use ($item) {
+                $q->where('id', $item->reference);
             });
 
             $tiles = $query->get();
