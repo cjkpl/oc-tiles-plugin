@@ -45,3 +45,6 @@
     - builder_table_update_cjkpl_tiles_sections_2.php
 1.0.19:
     - Temporarily removed custom column types (in future versions it will be restored as a dependency on another plugin).
+1.0.20:
+    - Added support for StaticMenu (new item types), and for SiteMap
+
