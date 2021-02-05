@@ -3,6 +3,8 @@
 use Cjkpl\Tiles\Classes\CardMaker;
 use System\Classes\PluginBase;
 use Illuminate\Support\Facades\Event;
+use Cjkpl\Tiles\Models\Section;
+use Cjkpl\Tiles\Models\Card;
 
 class Plugin extends PluginBase
 {
@@ -86,5 +88,36 @@ class Plugin extends PluginBase
                 $keywords = $keywords->merge($tags);
             }
         );
+
+        /*
+         * Register menu items for the RainLab.Pages plugin, and for sitemap
+         */
+        Event::listen('pages.menuitem.listTypes', function() {
+            return [
+                'tiles-section'         => 'cjkpl.tiles::lang.menuitem.tiles-section',
+                'all-tiles-sections'    => 'cjkpl.tiles::lang.menuitem.all-tiles-sections',
+                'tile'                  => 'cjkpl.tiles::lang.menuitem.tile',
+                'all-tiles'             => 'cjkpl.tiles::lang.menuitem.all-tiles',
+                'one-section-tiles'         => 'cjkpl.tiles::lang.menuitem.one-section-tiles',
+            ];
+        });
+
+        Event::listen('pages.menuitem.getTypeInfo', function($type) {
+            if ($type == 'tiles-section' || $type == 'all-tiles-sections') {
+                return Section::getMenuTypeInfo($type);
+            }
+            elseif ($type == 'tile' || $type == 'all-tiles' || $type == 'one-section-tiles') {
+                return Card::getMenuTypeInfo($type);
+            }
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function($type, $item, $url, $theme) {
+            if ($type == 'tiles-section' || $type == 'all-tiles-sections') {
+                return Section::resolveMenuItem($item, $url, $theme);
+            }
+            elseif ($type == 'tile' || $type == 'all-tiles' || $type == 'one-section-tiles') {
+                return Card::resolveMenuItem($item, $url, $theme);
+            }
+        });
     }
 }
