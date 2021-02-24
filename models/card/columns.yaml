@@ -17,11 +17,11 @@ columns:
         type: text
         searchable: true
         sortable: true
-#    description:
-#        label: description
-#        type: short-text
-#        searchable: true
-#        invisible: true
+    description:
+        label: description
+        type: short-text
+        searchable: true
+        invisible: true
     name:
         label: Name
         type: text
@@ -32,14 +32,14 @@ columns:
         type: text
         searchable: true
         sortable: true
-#    photo:
-#        label: photo
-#        type: media-preview
-#        invisible: true
-#    image:
-#        label: image
-#        type: media-preview
-#        invisible: true
+    photo:
+        label: photo
+        type: media-preview
+        invisible: true
+    image:
+        label: image
+        type: media-preview
+        invisible: true
     url:
         label: url
         type: text
@@ -59,12 +59,12 @@ columns:
         invisible: true
     is_visible:
         label: is_visible
-        type: switch
+        type: list-switch
         searchable: true
         sortable: true
     is_seo:
         label: is_seo
-        type: switch
+        type: list-switch
         searchable: true
         sortable: true
     sort_order:

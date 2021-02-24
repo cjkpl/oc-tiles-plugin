@@ -10,15 +10,14 @@ columns:
         sortable: true
     description:
         label: Description
-        type: text
-        invisible: true
+        type: short-text
     is_visible:
         label: Visible?
-        type: switch
+        type: list-switch
         sortable: true
     is_seo:
         label: SEO?
-        type: switch
+        type: list-switch
         sortable: true
     parent_name:
         label: Parent
