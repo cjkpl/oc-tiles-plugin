@@ -21,3 +21,9 @@ navigation:
                 url: cjkpl/tiles/cards
                 icon: icon-trello
                 permissions: ['cjkpl.tiles.cards']
+# NOT USED YET
+#            settings-menu-item:
+#                label: Settings
+#                url: system/settings/update/cjkpl/tiles/config
+#                icon: icon-gear
+#                permissions: ['cjkpl.tiles.settings']

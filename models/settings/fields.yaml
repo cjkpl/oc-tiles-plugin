@@ -1,0 +1,10 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+# tabs:
+fields:
+    api_section:
+        label: cjkpl.tiles::lang.settings.not_used
+        type: section
+        comment: cjkpl.tiles::lang.settings.not_used

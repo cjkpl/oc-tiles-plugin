@@ -6,6 +6,7 @@ namespace Cjkpl\Tiles\Classes;
 use Cjkpl\Tiles\Models\Card as CardModel;
 use Illuminate\Support\Facades\Request;
 use Event;
+use Config;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -41,8 +42,14 @@ class CardMaker
     protected static function getCardFromId(int $id, bool $forSeo = false, string $columns = '*') : ?CardModel
     {
         // can't pass raw list of columns, to avoid sql attacks
-        $available_cols = \October\Rain\Support\Facades\Schema
-            ::getColumnListing(app(\Cjkpl\Tiles\Models\Card::class)->getTable());
+        // config may define a list of available columns - if not, use all from table
+
+        if (Config::get('cjkpl.tiles::TILES_API_ALLOWED_COLUMNS') == '*') {
+            $available_cols = \October\Rain\Support\Facades\Schema
+                ::getColumnListing(app(\Cjkpl\Tiles\Models\Card::class)->getTable());
+        } else {
+            $available_cols = explode(',', Config::get('cjkpl.tiles::TILES_API_ALLOWED_COLUMNS'));
+        }
         $requested_cols = ($columns == '*')
             ? $available_cols
             : explode(',', $columns);

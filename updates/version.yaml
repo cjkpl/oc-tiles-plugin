@@ -47,4 +47,5 @@
     - Temporarily removed custom column types (in future versions it will be restored as a dependency on another plugin).
 1.0.20:
     - Added support for StaticMenu (new item types), and for SiteMap
-
+1.0.21:
+    - Added API access to individual Cards, via /api/{id}/{columns?}

@@ -82,6 +82,16 @@ The Dialog for configuring a "Section of Cards" contains the following options:
 - Language filter: author's personal requirements called for an easy way to add cards in multiple languages (also in one section), and this option allows you to select for display only cards in a specific language.
 - Section: decides which of the sections defined in the Tiles Section editor in the backend should be displayed. You can only display one section at a time.
 
-#### Changelog
+#### Configuration and API
 
-* 1.0.10 (2020-09-22). Renamed tags_url_patter to tags_url column and turned it into a repeater. This allows generating tags with unique urls, e.g. ```{% for tag in xtags %} {{ tag.label }} {{ tag.url }} {{ tag.target }} {% endfor %}```
+Starting with version 1.0.21, Plugin has its own configuration which can be used to enable API access to retrieve individual Tiles (Cards) records via JSON. The following entries may be added to .env to configure it
+```
+TILES_API_ENABLED=false
+TILES_API_ROUTE=/api/tile/{id}/{columns?}
+TILES_API_ALLOWED_COLUMNS=*
+```
+By default, the API is disabled.
+
+Parameter {columns}, if defined, should contain comma-delimited list of column names to retrieve.
+
+If you want to limit retrievable columns, change "*" to comma-delimited list of allowed column names in the config.

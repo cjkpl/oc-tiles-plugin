@@ -5,6 +5,7 @@ use System\Classes\PluginBase;
 use Illuminate\Support\Facades\Event;
 use Cjkpl\Tiles\Models\Section;
 use Cjkpl\Tiles\Models\Card;
+use Backend;
 
 class Plugin extends PluginBase
 {
@@ -26,6 +27,17 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+        return [
+// NOT USED YET
+//            'config' => [
+//                'label'       => 'Tiles',
+//                'description' => 'Manage settings for Tiles',
+//                'icon'        => 'icon-trello',
+//                'class'       => 'Cjkpl\Tiles\Models\Settings',
+//                'order'       => 500,
+//                'keywords'    => 'tiles settings'
+//            ]
+        ];
     }
 
     public function register()
@@ -48,6 +60,11 @@ class Plugin extends PluginBase
                 'tab'   => 'Tiles',
                 'label' => 'Manage sections (with cards)'
             ],
+// NOT USED YET
+//            'cjkpl.tiles.settings' => [
+//                'tab'   => 'Tiles',
+//                'label' => 'Manage Tiles plugin settings'
+//            ],
         ];
     }
 
@@ -119,5 +136,6 @@ class Plugin extends PluginBase
                 return Card::resolveMenuItem($item, $url, $theme);
             }
         });
-    }
+
+    } //end boot
 }

@@ -10,5 +10,8 @@
         'all-tiles'             => 'All Tiles',
         'one-section-tiles'         => 'Tiles in a Section'
 
-    ]
+    ],
+    'settings' => [
+        'not_used'              => 'Not used yet',
+    ],
 ];
