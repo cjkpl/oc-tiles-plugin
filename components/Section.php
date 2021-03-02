@@ -50,7 +50,7 @@ class Section extends ComponentBase
             ],
             'layout' => [
                 'title'       => 'Layout',
-                'description' => 'Leave empty to use default; 
+                'description' => 'Leave empty to use default;
                                  If entered, OctoberCMS will use a partial tiles/+layout_name',
                 'type'        => 'dropdown',
                 'placeholder' => '-default-'
@@ -91,7 +91,7 @@ class Section extends ComponentBase
         if ($this->param('slug')) { // override from url
             // allow multiple sections - if slug contains a comma, break it into tokens
             $section_ids = explode(',',$this->param('slug'));
-        } 
+        }
 
         $this->cards =
             \Cjkpl\Tiles\Models\Card
@@ -100,12 +100,16 @@ class Section extends ComponentBase
                 ->orderBy('section_id','asc')
                 ->orderBy('sort_order','asc')->get();
 
-        $this->sections = 
+        // TODO! Fix this so that cards in child sections do not ignore is_visible flag!!!
+
+        $this->sections =
             \Cjkpl\Tiles\Models\Section::whereIn('id', $section_ids)
                                         ->where('is_visible',true)
+                                        ->with(['cards' => function($query){
+                                            $query->where('is_visible',true);
+                                        }])
                                         ->orderBy('id','asc')
                                         ->get(['id','name','is_visible','layout']);
-
 
         // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
         Event::fire('cjkpl.tiles.section.display', [&$this]);
@@ -118,7 +122,7 @@ class Section extends ComponentBase
                 ($card['autolink_content'] == 1) &&  // ok to autolink
                 (strlen($card['url']) == 0 &&        // but only if url is empty
                  strlen($card['content'])>3)         // and there is some content defined
-                ) 
+                )
                 {
                 $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
                 }
@@ -178,8 +182,8 @@ class Section extends ComponentBase
         $files = array_diff(scandir($path), array('.', '..'));
 
         $options = [
-            '-default-' => 'Default Layout', // use components/section/tileset1.htm 
-            '-section-' => 'Section (inline)' // use inline layout specified in Section config (e.g. from FateFactory) 
+            '-default-' => 'Default Layout', // use components/section/tileset1.htm
+            '-section-' => 'Section (inline)' // use inline layout specified in Section config (e.g. from FateFactory)
         ];
         foreach ($files as $file) {
             if (substr($file, 0, 1) !== '_') {
