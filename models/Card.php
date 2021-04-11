@@ -48,6 +48,17 @@ class Card extends Model
     }
 
     /**
+     * @param $query
+     * @return mixed
+     * Used to include/exclude from seo and menu item list
+     */
+    public function scopeIsSeo($query)
+    {
+        return $query
+            ->where('is_seo', true);
+    }
+
+    /**
      * Handler for the pages.menuitem.getTypeInfo event.
      * Returns a menu item type information. The type information is returned as array
      * with the following elements:
@@ -59,7 +70,8 @@ class Card extends Model
      *   false if omitted.
      * - dynamicItems - Boolean value indicating whether the item type could generate new menu items.
      *   Optional, false if omitted.
-     * - cmsPages - a list of CMS pages (objects of the Cms\Classes\Page class), if the item type requires a CMS page reference to
+     * - cmsPages - a list of CMS pages (objects of the Cms\Classes\Page class),
+     *   if the item type requires a CMS page reference to
      *   resolve the item URL.
      *
      * @param string $type Specifies the menu item type
@@ -176,6 +188,7 @@ class Card extends Model
             ];
 
             $tiles = self::isVisible()
+                ->isSeo() //seo scope excludes from both menu item list and sitemap.xml
                 ->orderBy('title')
                 ->get();
 
@@ -206,6 +219,7 @@ class Card extends Model
             ];
 
             $query = self::isVisible()
+                ->isSeo() //seo scope excludes from both menu item list and sitemap.xml
                 ->orderBy('title');
 
             $query->whereHas('section', function($q) use ($item) {

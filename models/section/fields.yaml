@@ -22,6 +22,7 @@ tabs:
             emptyOption: None
         is_seo:
             label: 'Include name / description in SEO?'
+            comment: 'This excludes from SEO, sitemap.xml, and menu item lists'
             span: left
             type: switch
             default: 1
