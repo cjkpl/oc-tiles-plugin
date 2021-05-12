@@ -62,9 +62,14 @@ class Section extends ComponentBase
                 'type'        => 'dropdown',
             ],
             'section' => [
-                'title'   => 'Section',
-                'description' => 'Select section of tiles/cards to display',
+                'title'   => 'Section(s)',
+                'description' => 'Select (comma-separated) section(s) of cards to display',
                 'type'    => 'dropdown'
+            ],
+            'useSlugs' => [
+                'title'       => 'Use section slugs',
+                'description' => 'Rather than IDs, use section slugs',
+                'type'        => 'checkbox'
             ],
             'flipeven' => [
                 'title'       => 'Alternate odd/even',
@@ -84,13 +89,22 @@ class Section extends ComponentBase
     {
         $this->prepareVars();
 
-        // if param('slug') defined, it overrides 'section' property
-
-        $section_ids = [$this->property('section')]; // default from property
-
         if ($this->param('slug')) { // override from url
             // allow multiple sections - if slug contains a comma, break it into tokens
-            $section_ids = explode(',',$this->param('slug'));
+            $sections = explode(',',$this->param('slug'));
+        } else {
+            // if param('slug') defined, it overrides 'section' property
+            $sections = explode(',',$this->property('section')); // default from property
+        }
+        
+        if ($this->property('useSlugs')) {
+            // convert section slugs into ids
+            $section_ids = \Cjkpl\Tiles\Models\Section
+                ::select('id')
+                ->whereIn('slug',$sections)
+                ->get()->pluck('id')->toArray();
+        } else {
+            $section_ids = $sections;
         }
 
         $this->cards =

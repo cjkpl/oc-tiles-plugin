@@ -27,3 +27,6 @@ columns:
     sort_order:
         label: Sort Order
         sortable: true
+    slug:
+        label: Slug
+        invisible: true

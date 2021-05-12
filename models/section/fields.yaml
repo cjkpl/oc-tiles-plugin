@@ -2,7 +2,14 @@ tabs:
     fields:
         name:
             label: 'Section name'
-            span: full
+            span: left
+            type: text
+        slug:
+            label: Slug
+            span: right
+            preset:
+                field: name
+                type: slug
             type: text
         description:
             label: 'Description'
