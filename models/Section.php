@@ -217,7 +217,7 @@ class Section extends Model
         // as of 2021-02-05, only ID is supported,
         // TODO: add slug to editor form and support for slug elsewhere
         $params = [
-            'slug' => $section->id
+            'slug' => $section->slug
         ];
 
         $url = CmsPage::url($page->getBaseFileName(), $params);

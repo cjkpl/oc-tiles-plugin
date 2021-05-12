@@ -44,8 +44,11 @@
     - 'Updated table cjkpl_tiles_sections. + parent_id for child/parent sections. + sort_orders for section sorting. + slug for seo-friendly urls. + is_seo for cjkpl.seo events. + description.'
     - builder_table_update_cjkpl_tiles_sections_2.php
 1.0.19:
-    - Temporarily removed custom column types (in future versions it will be restored as a dependency on another plugin).
+    - 'Temporarily removed custom column types (in future versions it will be restored as a dependency on another plugin).'
 1.0.20:
-    - Added support for StaticMenu (new item types), and for SiteMap
+    - 'Added support for StaticMenu (new item types), and for SiteMap'
 1.0.21:
-    - Added API access to individual Cards, via /api/{id}/{columns?}
+    - 'Added API access to individual Cards, via /api/{id}/{columns?}'
+1.0.22:
+    - 'Updated table cjkpl_tiles_cards - added slug column'
+    - builder_table_update_cjkpl_tiles_cards_4.php

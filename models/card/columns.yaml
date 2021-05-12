@@ -76,3 +76,6 @@ columns:
         type: text
         select: name
         relation: section
+    slug:
+        label: Slug
+        invisible: true

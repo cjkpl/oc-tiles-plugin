@@ -66,9 +66,15 @@ class Section extends ComponentBase
                 'description' => 'Select (comma-separated) section(s) of cards to display',
                 'type'    => 'dropdown'
             ],
-            'useSlugs' => [
-                'title'       => 'Use section slugs',
-                'description' => 'Rather than IDs, use section slugs',
+            'useIds' => [
+                'title'       => 'Use section ids',
+                'description' => 'Allow section IDs, not just slugs',
+                'type'        => 'checkbox',
+                'default'     => 1,
+            ],
+            'replaceWithChildren' => [
+                'title'       => 'Child sections only',
+                'description' => 'Replace with child sections, ignore items directly in selected section',
                 'type'        => 'checkbox'
             ],
             'flipeven' => [
@@ -96,21 +102,38 @@ class Section extends ComponentBase
             // if param('slug') defined, it overrides 'section' property
             $sections = explode(',',$this->property('section')); // default from property
         }
-        
-        if ($this->property('useSlugs')) {
+
+        // no need to continue if no section selected
+        if (count($sections) == 0) return;
+
+        // check first section - if it is a positive integer, we have IDs not slugs
+        $paramIsId = ($this->property('useIds')
+                        && (is_int($sections[0]) || ctype_digit($sections[0]))
+                        && (int)$sections[0]>0);
+         
+        // even if parm is ID, check if we are allowed to call by id
+        if ($paramIsId && $this->property('useIds')) {
             // convert section slugs into ids
+            $section_ids = $sections;
+        } else {
             $section_ids = \Cjkpl\Tiles\Models\Section
                 ::select('id')
                 ->whereIn('slug',$sections)
                 ->get()->pluck('id')->toArray();
-        } else {
-            $section_ids = $sections;
+        }
+
+        // if replace with children, rather than id, we need to reference parent_id
+        if ($this->property('replaceWithChildren')) {
+            $section_ids = \Cjkpl\Tiles\Models\Section
+            ::select('id')
+            ->whereIn('parent_id',$section_ids)
+            ->get()->pluck('id')->toArray();
         }
 
         $this->cards =
             \Cjkpl\Tiles\Models\Card
-                ::whereIn('section_id',$section_ids)
-                ->where('is_visible',true)
+                ::where('is_visible',true)
+                ->whereIn('section_id',$section_ids)
                 ->orderBy('section_id','asc')
                 ->orderBy('sort_order','asc')->get();
 
@@ -138,7 +161,7 @@ class Section extends ComponentBase
                  strlen($card['content'])>3)         // and there is some content defined
                 )
                 {
-                $card->url = $this->controller->pageUrl($this->property('contentPage'), ["id" => $card['id']]);
+                $card->url = $this->controller->pageUrl($this->property('contentPage'), ["slug" => $card['slug']]);
                 }
         });
 

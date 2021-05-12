@@ -27,12 +27,32 @@ class Card extends ComponentBase
 
     public function defineProperties()
     {
-        return [];
+        return [
+            'useIds' => [
+                'title'       => 'Use card IDs',
+                'description' => 'Allow Card IDs, not only slugs',
+                'type'        => 'checkbox',
+                'default'     => 1
+            ],
+        ];
     }
 
     public function onRun()
     {
-        $this->card = CardMaker::getCard($this->param('id'));
+
+        // either slug, or id
+        $slugId = $this->param('slug');
+
+        // check the param - if it is a positive integer, we have ID not slug
+        $paramIsId = ($this->property('useIds')
+                        && (is_int($slugId) || ctype_digit($slugId))
+                        && (int)$slugId>0);
+
+        if ($paramIsId && $this->property('useIds')) {
+            $this->card = CardMaker::getCardById($slugId);
+        } else { // param is slug
+            $this->card = CardMaker::getCardBySlug($slugId);
+        }
         // notify extending plugins (e.g. SQLTiles) of the retrieved card contents
         Event::fire('cjkpl.tiles.card.display', [&$this->card]);
 

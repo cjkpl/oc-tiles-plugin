@@ -8,7 +8,7 @@ if (Config::get('cjkpl.tiles::TILES_API_ENABLED')) {
     Route::get(
         Config::get('cjkpl.tiles::TILES_API_ROUTE'),
         function ($id, $columns = '*') {
-            return Response::json(\Cjkpl\Tiles\Classes\CardMaker::getCard($id, false, $columns));
+            return Response::json(\Cjkpl\Tiles\Classes\CardMaker::getCardById($id, false, $columns));
         }
     );
 }

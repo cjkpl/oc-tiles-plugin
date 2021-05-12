@@ -15,7 +15,7 @@ tabs:
             tab: Misc
         classes:
             label: 'CSS Classes'
-            span: auto
+            span: left
             type: text
             comment: '{{ card.classes }} in TWIG'
             tab: Misc
@@ -25,6 +25,14 @@ tabs:
             span: right
             type: mediafinder
             comment: '{{ card.image|media }} in TWIG'
+            tab: Misc
+        slug:
+            label: Slug
+            span: left
+            preset:
+                field: name
+                type: slug
+            type: text
             tab: Misc
         _display_settings:
             label: 'Display Settings'

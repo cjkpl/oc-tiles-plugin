@@ -78,7 +78,7 @@ class Plugin extends PluginBase
             function (string &$title, string &$description, \October\Rain\Support\Collection &$keywords) {
 
                 // retrieve card by last URI segment (should be card ID)
-                $card = CardMaker::getCard(null, true);
+                $card = CardMaker::getCardBySlug(null, true);
                 // if no card found, return without any action
                 if (!$card) return;
 
