@@ -22,6 +22,7 @@ columns:
     parent_name:
         label: Parent
         relation: parent
+        select: id
         sortable: true
     sort_order:
         label: Sort Order
