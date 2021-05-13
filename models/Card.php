@@ -259,7 +259,7 @@ class Card extends Model
         }
 
         $params = [
-            'id' => $category->id
+            'slug' => $category->slug
         ];
         $url = CmsPage::url($page->getBaseFileName(), $params);
 
