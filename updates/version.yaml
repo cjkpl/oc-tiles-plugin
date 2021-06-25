@@ -52,3 +52,7 @@
 1.0.22:
     - 'Updated table cjkpl_tiles_cards - added slug column'
     - builder_table_update_cjkpl_tiles_cards_4.php
+1.0.23:
+    - 'Added new field to card: require_login (default false); modfied custom_sets repeater to add mediafinder'
+    - add_require_login_to_card.php
+    

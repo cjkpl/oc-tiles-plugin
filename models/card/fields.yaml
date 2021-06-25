@@ -70,6 +70,12 @@ tabs:
             type: switch
             default: true
             tab: Misc
+        require_login:
+            label: 'Require login to display?'
+            span: right
+            type: switch
+            default: false
+            tab: Misc
 
         name:
             label: Name
@@ -142,7 +148,6 @@ tabs:
                             _blank: 'New window'
                         type: dropdown
 
-
         autolink_content:
             label: 'Auto link content if present'
             span: full
@@ -172,11 +177,11 @@ tabs:
                         label: URL
                         span: right
                         type: text
+                    document:
+                        label: Document
+                        span: auto
+                        type: mediafinder
                     label1:
                         label: 'Label 1'
-                        span: auto
-                        type: text
-                    label2:
-                        label: 'Label 2'
                         span: auto
                         type: text
