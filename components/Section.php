@@ -167,6 +167,14 @@ class Section extends ComponentBase
 
     }
 
+    public function getCard($id)
+    {
+        return
+        \Cjkpl\Tiles\Models\Card
+            ::where('is_visible',true)
+            ->where('id',$id)->first();
+    }
+
     public function getContentPageOptions()
     {
         return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
